@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <form action="/tags" method="post">
+        {% for i in range(1,11) %}
+        <div class="form-check">
+            {% if tags and i in tags %}
+                <input checked class="form-check-input" type="checkbox" id=tag name=tag value={{ i }}>
+            {% else %}
+                <input class="form-check-input" type="checkbox" id=tag name=tag value={{ i }}>
+            {% end %}
+            <label class="form-check-label" for=tag> Tag {{ i }}</label>
+        </div>
+        {% end %}
+        <div><input class="btn btn-primary my-4" type="submit" value="Submit"/></div>
+        {% module xsrf_form_html() %}
+    </form>
+    {% if users %}
+        <hr class="m-4"/>
+        <p>Number of users with tags {{ tags }} : {{ len(users) }}</p>
+        <p>Id of users with tags {{ tags }} : </p>
+
+        {% for user in users %}
+            <p> <a href="/users/{{ user.id }}"> user {{ user.id }}</a></p>
+        {% end %}
+    {% end %}
+{% end %}

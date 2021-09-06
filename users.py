@@ -9,7 +9,7 @@ import utils
 class User:
 
     def __init__(self, idx, tags, login_date):
-        self.id = "User" + str(idx)
+        self.id = idx
         self.tags = tags
         self.login_date = login_date
 
@@ -25,6 +25,10 @@ class Users:
 
     def gen_random_users(self, num_users):
         self.users = [User(idx, utils.gen_random_tags(), utils.gen_random_date()) for idx in range(num_users)]
+
+    def get_user_with_id(self, id):
+        user= [user for user in self.users if user.id == int(id)][0]
+        return user
 
     def get_inactive_users(self):
         return [user for user in self.users if (datetime.today() - user.login_date).days > 7]

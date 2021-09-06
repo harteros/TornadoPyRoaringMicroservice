@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <p>Number of users that haven't logged in for at least 7 days: {{ len(users) }}</p>
+    <p>Id of users that haven't logged in for at least 7 days: </p>
+
+    {% for user in users %}
+        <p><a href="/users/{{ user.id }}"> user {{ user.id }}</a></p>
+    {% end %}
+{% end %}

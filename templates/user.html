@@ -1,0 +1,8 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <p>User information for validation purposes</p>
+    <p>Id : {{ user.id }}</p>
+    <p>Tags: {{ list(user.tags) }}</p>
+    <p>Last Login Date: {{ user.login_date.strftime('%d-%m-%Y') }}</p>
+{% end %}
