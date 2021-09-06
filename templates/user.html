@@ -1,8 +1,26 @@
 {% extends "index.html" %}
+{% block title %}Users (validation){% end %}
 
 {% block content %}
-    <p>User information for validation purposes</p>
-    <p>Id : {{ user.id }}</p>
-    <p>Tags: {{ list(user.tags) }}</p>
-    <p>Last Login Date: {{ user.login_date.strftime('%d-%m-%Y') }}</p>
+<p>User information for validation purposes</p>
+{% for user in users %}
+<div class="row">
+    <div class="col-1">
+        <p class="d-inline"><a href="/users/{{ user.id }}"> Id: {{ user.id }}</a></p>
+    </div>
+    <div class="col-auto">
+        <div class="vr"></div>
+    </div>
+    <div class="col">
+        <p class="d-inline">Tags: {{ list(user.tags) }}</p>
+    </div>
+    <div class="col-auto">
+        <div class="vr"></div>
+    </div>
+    <div class="col">
+        <p class="d-inline">Last Login Date: {{ user.login_date.strftime('%d-%m-%Y') }}</p>
+    </div>
+    <hr/>
+</div>
+{% end %}
 {% end %}

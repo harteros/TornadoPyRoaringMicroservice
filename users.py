@@ -27,8 +27,7 @@ class Users:
         self.users = [User(idx, utils.gen_random_tags(), utils.gen_random_date()) for idx in range(num_users)]
 
     def get_user_with_id(self, id):
-        user= [user for user in self.users if user.id == int(id)][0]
-        return user
+        return [user for user in self.users if user.id == int(id)]
 
     def get_inactive_users(self):
         return [user for user in self.users if (datetime.today() - user.login_date).days > 7]
